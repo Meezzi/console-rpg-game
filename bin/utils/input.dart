@@ -10,5 +10,8 @@ String getUserName() {
   stdout.write('캐릭터의 이름을 입력하세요: ');
   String? name = stdin.readLineSync();
 
+  if (name != null && regexp.hasMatch(name)) {
+    return name;
+  }
   return '';
 }
