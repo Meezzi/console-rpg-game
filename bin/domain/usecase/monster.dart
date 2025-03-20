@@ -19,5 +19,7 @@ class Monster {
 
   void attackCharacter(Character character) {}
 
-  void showStatus() {}
+  void showStatus() {
+    print('$name - 체력: $health, 공격력: $attack');
+  }
 }
