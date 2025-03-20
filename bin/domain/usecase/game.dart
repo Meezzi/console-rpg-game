@@ -61,6 +61,10 @@ class Game {
           print('게임을 종료합니다.');
           return;
         }
+      } else {
+        // 몬스터 리스트가 비어있다면 게임 종료
+        print('축하합니다! 모든 몬스터를 물리쳤습니다.');
+        return;
       }
       print('');
     }
