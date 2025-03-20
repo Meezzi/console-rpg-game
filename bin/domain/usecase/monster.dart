@@ -4,7 +4,8 @@ import 'character.dart';
 class Monster {
   String name;
   int health;
-  int attack;
+  int maxAttack;
+  int attack = 0;
   int defense = 0;
 
   Monster(this.name, this.health, this.attack);
