@@ -87,6 +87,8 @@ class Game {
 
   // 전투 시작
   Future<bool> battle(Monster monster) async {
+    // 턴 횟수
+    int turn = 1;
     while (true) {
       print('${character.name}의 턴');
       stdout.write('행동을 선택하세요 (1: 공격, 2: 방어): ');
@@ -122,7 +124,9 @@ class Game {
       print('');
 
       // 모든 턴이 끝난 후 1초 대기
+      // 턴 1 증가
       await Future.delayed(Duration(milliseconds: 1000));
+      turn++;
 
       // 캐릭터의 체력이 0 이하면, 전투 종료
       if (character.health <= 0) {
