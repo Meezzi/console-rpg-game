@@ -110,6 +110,11 @@ class Game {
         case '2':
           character.defend(monster);
           break;
+        case '3':
+          if (character.item == 1) {
+            print('공격력이 두 배로 증가했습니다.');
+            character.attack *= 2;
+          }
       }
       print('');
 
