@@ -23,9 +23,14 @@ class Game {
 
     while (true) {
       print('새로운 몬스터가 나타났습니다!');
-      
+
       // 몬스터 리스트에서 랜덤으로 몬스터 선택
       Monster monster = getRandomMonster();
+
+      // 몬스터의 공격력을 랜덤으로 설정
+      monster.attack =
+          Random().nextInt(monster.maxAttack - character.defense) +
+          character.defense;
     }
   }
 
