@@ -40,10 +40,12 @@ class Game {
       bool battleResult = await battle(monster);
 
       // 결과가 true이면 몬스터 리스트에서 해당 몬스터 삭제
+      // 물리친 몬스터 수 1 증가
       if (battleResult) {
         print('${monster.name}을(를) 물리쳤습니다!');
         print('');
         monsters.remove(monster);
+        defeatedMonsterCount++;
       }
     }
   }
