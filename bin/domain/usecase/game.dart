@@ -137,5 +137,9 @@ class Game {
             '${monster[i].name}, ${monster[i].health}, ${monster[i].attack}, ${monster[i].defense}, ${monster[i].maxAttack}\n';
       }
     }
+
+    // Character 정보와 Monster 정보를 resource/result.txt 파일에 저장
+    String contents = '$characterData\n$monsterData';
+    File('resource/result.txt').writeAsStringSync(contents);
   }
 }
