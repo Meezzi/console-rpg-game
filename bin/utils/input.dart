@@ -31,3 +31,19 @@ String getUserBattleInput() {
     }
   }
 }
+
+// 다음 전투를 계속 할지 입력
+bool isContinueNextBattle() {
+  while (true) {
+    String? input = getUserInput();
+
+    switch (input) {
+      case 'y':
+        return true;
+      case 'n':
+        return false;
+      default:
+        print('다시 입력해주세요.');
+    }
+  }
+}

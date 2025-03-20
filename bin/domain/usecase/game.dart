@@ -7,9 +7,68 @@ import '../../utils/input.dart';
 class Game {
   Character character;
   List<Monster> monsters;
-  int defeatedMonsterCount;
+  int defeatedMonsterCount = 0;
 
-  Game(this.character, this.monsters, this.defeatedMonsterCount);
+  //Game 생성자
+  Game(this.character, this.monsters);
+
+  Future<void> startGame() async {
+    print('게임을 시작합니다!');
+    // 캐릭터 상태 표시
+    character.showStatus();
+    print('');
+
+    // 턴 시작 전 1초 대기
+    await Future.delayed(Duration(milliseconds: 1000));
+
+    while (true) {
+      print('새로운 몬스터가 나타났습니다!');
+
+      // 몬스터 리스트에서 랜덤으로 몬스터 선택
+      Monster monster = getRandomMonster();
+
+      // 몬스터의 공격력을 랜덤으로 설정
+      monster.attack =
+          Random().nextInt(monster.maxAttack - character.defense) +
+          character.defense;
+
+      // 몬스터 상태 표시
+      monster.showStatus();
+      print('');
+
+      // 몬스터와 전투 후, 결과 저장
+      bool battleResult = await battle(monster);
+
+      // 결과가 true이면 몬스터 리스트에서 해당 몬스터 삭제
+      // 물리친 몬스터 수 1 증가
+      // 결과가 false라면 게임 종료
+      if (battleResult) {
+        print('${monster.name}을(를) 물리쳤습니다!');
+        print('');
+        monsters.remove(monster);
+        defeatedMonsterCount++;
+      } else {
+        print('도전에 실패했습니다.');
+        return;
+      }
+      // 몬스터 리스트가 비어있지 않으면 다음 전투 여부 확인
+      if (monsters.isNotEmpty) {
+        stdout.write('다음 몬스터와 싸우시겠습니까? (y/n): ');
+
+        // 입력이 n 이라면(전투를 하고 싶지 않다면) 게임 종료
+        // 입력이 y 라면 전투 지속
+        if (!isContinueNextBattle()) {
+          print('게임을 종료합니다.');
+          return;
+        }
+      } else {
+        // 몬스터 리스트가 비어있다면 게임 종료
+        print('축하합니다! 모든 몬스터를 물리쳤습니다.');
+        return;
+      }
+      print('');
+    }
+  }
 
   // 전투 시작
   Future<bool> battle(Monster monster) async {
