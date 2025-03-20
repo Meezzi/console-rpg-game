@@ -55,15 +55,24 @@ class Game {
       if (monsters.isNotEmpty) {
         stdout.write('다음 몬스터와 싸우시겠습니까? (y/n): ');
 
-        // 입력이 n 이라면(전투를 하고 싶지 않다면) 게임 종료
+        // 입력이 n 이라면(전투를 하고 싶지 않다면) 결과 저장 여부 확인 후, 게임 종료
         // 입력이 y 라면 전투 지속
         if (!isContinueNextBattle()) {
+          stdout.write('결과를 저장하시겠습니까? ');
+          if (isContinueNextBattle()) {
+            saveGame(character, monsters, false);
+          }
           print('게임을 종료합니다.');
           return;
         }
       } else {
         // 몬스터 리스트가 비어있다면 게임 종료
-        print('축하합니다! 모든 몬스터를 물리쳤습니다.');
+        // 결과 저장 여부 확인 후, 결과 저장
+        print('축하합니다! 모든 몬스터를 물리쳤습니다.\n');
+        stdout.write('결과를 저장하시겠습니까? (y/n): ');
+        if (isContinueNextBattle()) {
+          saveGame(character, monsters, true);
+        }
         return;
       }
       print('');
@@ -119,5 +128,27 @@ class Game {
   Monster getRandomMonster() {
     Monster monster = monsters[Random().nextInt(monsters.length)];
     return monster;
+  }
+
+  // 결과를 resource/result.txt 파일에 저장
+  void saveGame(Character character, List<Monster> monster, bool gameResult) {
+    // Character의 정보를 변수에 저장
+    String characterData =
+        '${character.name}, ${character.health}, $gameResult';
+
+    // Monster의 정보를 저장할 변수 선언
+    String monsterData = '';
+
+    // 전투를 진행하지 않은 몬스터가 있다면 몬스터의 데이터 저장
+    if (monster.isNotEmpty) {
+      for (int i = 0; i < monster.length; i++) {
+        monsterData +=
+            '${monster[i].name}, ${monster[i].health}, ${monster[i].attack}, ${monster[i].defense}, ${monster[i].maxAttack}\n';
+      }
+    }
+
+    // Character 정보와 Monster 정보를 resource/result.txt 파일에 저장
+    String contents = '$characterData\n$monsterData';
+    File('resource/result.txt').writeAsStringSync(contents);
   }
 }
