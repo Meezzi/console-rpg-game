@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'character.dart';
 import 'monster.dart';
 
@@ -12,5 +13,8 @@ class Game {
 
   void battle() {}
 
-  void getRandomMonster() {}
+  Monster getRandomMonster() {
+    Monster monster = monsters[Random().nextInt(monsters.length)];
+    return monster;
+  }
 }
