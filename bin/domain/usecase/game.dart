@@ -115,6 +115,8 @@ class Game {
             print('공격력이 두 배로 증가했습니다.');
             character.attack *= 2;
             character.item = 2;
+          } else {
+            print('이미 사용한 아이템입니다.');
           }
       }
       print('');
