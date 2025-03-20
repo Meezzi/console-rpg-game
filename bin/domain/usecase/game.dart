@@ -41,6 +41,11 @@ class Game {
       // 몬스터가 캐릭터 공격
       print('${monster.name}의 턴');
       monster.attackCharacter(character);
+
+      // 캐릭터와 몬스터 상태 표시
+      character.showStatus();
+      monster.showStatus();
+      print('');
     }
   }
 
