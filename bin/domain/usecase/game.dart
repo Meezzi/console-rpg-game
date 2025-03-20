@@ -55,9 +55,13 @@ class Game {
       if (monsters.isNotEmpty) {
         stdout.write('다음 몬스터와 싸우시겠습니까? (y/n): ');
 
-        // 입력이 n 이라면(전투를 하고 싶지 않다면) 게임 종료
+        // 입력이 n 이라면(전투를 하고 싶지 않다면) 결과 저장 여부 확인 후, 게임 종료
         // 입력이 y 라면 전투 지속
         if (!isContinueNextBattle()) {
+          stdout.write('결과를 저장하시겠습니까? ');
+          if (isContinueNextBattle()) {
+            saveGame(character, monsters, false);
+          }
           print('게임을 종료합니다.');
           return;
         }
