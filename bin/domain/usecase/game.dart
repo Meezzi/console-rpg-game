@@ -46,6 +46,9 @@ class Game {
       character.showStatus();
       monster.showStatus();
       print('');
+
+      // 모든 턴이 끝난 후 1초 대기
+      await Future.delayed(Duration(milliseconds: 1000));
     }
   }
 
