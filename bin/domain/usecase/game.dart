@@ -41,11 +41,15 @@ class Game {
 
       // 결과가 true이면 몬스터 리스트에서 해당 몬스터 삭제
       // 물리친 몬스터 수 1 증가
+      // 결과가 false라면 게임 종료
       if (battleResult) {
         print('${monster.name}을(를) 물리쳤습니다!');
         print('');
         monsters.remove(monster);
         defeatedMonsterCount++;
+      } else {
+        print('도전에 실패했습니다.');
+        return;
       }
     }
   }
