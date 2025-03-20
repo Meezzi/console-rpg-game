@@ -54,6 +54,13 @@ class Game {
       // 몬스터 리스트가 비어있지 않으면 다음 전투 여부 확인
       if (monsters.isNotEmpty) {
         stdout.write('다음 몬스터와 싸우시겠습니까? (y/n): ');
+
+        // 입력이 n 이라면(전투를 하고 싶지 않다면) 게임 종료
+        // 입력이 y 라면 전투 지속
+        if (!isContinueNextBattle()) {
+          print('게임을 종료합니다.');
+          return;
+        }
       }
       print('');
     }
