@@ -90,6 +90,13 @@ class Game {
     // 턴 횟수
     int turn = 1;
     while (true) {
+      // 3턴마다 몬스터의 방어력 2씩 증가
+      if (turn % 3 == 0) {
+        monster.increaseDefense();
+        print('${monster.name}의 방어력이 증가했습니다! 현재 방어력: ${monster.defense}');
+        print('');
+      }
+
       print('${character.name}의 턴');
       stdout.write('행동을 선택하세요 (1: 공격, 2: 방어): ');
 
