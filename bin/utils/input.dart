@@ -31,3 +31,10 @@ String getUserBattleInput() {
     }
   }
 }
+
+// 다음 전투를 계속 할지 입력
+bool isContinueNextBattle() {
+  while (true) {
+    String? input = getUserInput();
+  }
+}
