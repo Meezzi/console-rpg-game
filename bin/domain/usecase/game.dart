@@ -14,6 +14,8 @@ class Game {
 
   Future<void> startGame() async {
     print('게임을 시작합니다!');
+    // 캐릭터 상태 표시
+    character.showStatus();
   }
 
   // 전투 시작
