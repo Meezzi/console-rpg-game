@@ -31,6 +31,10 @@ class Game {
       monster.attack =
           Random().nextInt(monster.maxAttack - character.defense) +
           character.defense;
+
+      // 몬스터 상태 표시
+      monster.showStatus();
+      print('');
     }
   }
 
