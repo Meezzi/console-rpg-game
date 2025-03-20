@@ -36,5 +36,10 @@ String getUserBattleInput() {
 bool isContinueNextBattle() {
   while (true) {
     String? input = getUserInput();
+
+    switch (input) {
+      case 'y':
+        return true;
+    }
   }
 }
