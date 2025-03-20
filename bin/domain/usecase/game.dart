@@ -35,6 +35,9 @@ class Game {
       // 몬스터 상태 표시
       monster.showStatus();
       print('');
+
+      // 몬스터와 전투 후, 결과 저장
+      bool battleResult = await battle(monster);
     }
   }
 
