@@ -106,6 +106,13 @@ class Game {
       switch (input) {
         case '1':
           character.attackMonster(monster);
+
+          // 아이템이 2(사용했으나 공격하지 않은 상태)인 상태에서 공격을 선택하면
+          // 몬스터 공격후, 원래의 공격력으로 되돌아가고,
+          // 아이템 3 상태(사용하고, 공격한 상태)로 변경
+          if (character.item == 2) {
+            character.attack = (character.attack / 2).toInt();
+          }
           break;
         case '2':
           character.defend(monster);
