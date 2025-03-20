@@ -5,5 +5,9 @@ List<Monster> loadMonsterStatsAsync() {
   final file = File('resource/monsters.txt');
   var lines = file.readAsLinesSync();
 
-  return [];
+  List<Monster> monsterList = [];
+  for (int i = 0; i < lines.length; i++) {
+    monsterList.add(Monster.fromPlainText(lines[i]));
+  }
+  return monsterList;
 }
