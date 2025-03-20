@@ -17,7 +17,15 @@ class Game {
       print('${character.name}의 턴');
       stdout.write('행동을 선택하세요 (1: 공격, 2: 방어): ');
 
+      // 사용자 입력에 따른 공격과 방어
+      // getUserBattleInput()을 통해 1과 2만 입력값으로 넘기기 때문에 default는 하지 않음
       var input = getUserBattleInput();
+      switch (input) {
+        case '1':
+          character.attackMonster(monster);
+          break;
+      }
+      print('');
     }
   }
 
