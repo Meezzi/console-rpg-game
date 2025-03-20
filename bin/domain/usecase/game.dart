@@ -24,6 +24,9 @@ class Game {
         case '1':
           character.attackMonster(monster);
           break;
+        case '2':
+          character.defend(monster);
+          break;
       }
       print('');
     }
