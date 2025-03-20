@@ -31,4 +31,10 @@ class Character {
   void showStatus() {
     print('$name - 체력: $health, 공격력: $attack, 방어력: $defense');
   }
+
+  // 캐릭터의 체력 회복
+  void heal() {
+    health += 10;
+    print('보너스 체력을 얻었습니다! 현재 체력: $health');
+  }
 }
