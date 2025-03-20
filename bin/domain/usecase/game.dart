@@ -7,9 +7,10 @@ import '../../utils/input.dart';
 class Game {
   Character character;
   List<Monster> monsters;
-  int defeatedMonsterCount;
+  int defeatedMonsterCount = 0;
 
-  Game(this.character, this.monsters, this.defeatedMonsterCount);
+  //Game 생성자
+  Game(this.character, this.monsters);
 
   // 전투 시작
   Future<bool> battle(Monster monster) async {
