@@ -40,6 +40,8 @@ bool isContinueNextBattle() {
     switch (input) {
       case 'y':
         return true;
+      case 'n':
+        return false;
     }
   }
 }
