@@ -34,6 +34,9 @@ class Game {
       if (monster.health < 0) {
         return true;
       }
+
+      // 캐릭터의 턴이 끝난 후, 몬스터의 턴이 오기 전 1초 대기
+      await Future.delayed(Duration(milliseconds: 1000));
     }
   }
 
