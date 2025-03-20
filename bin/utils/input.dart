@@ -42,6 +42,8 @@ bool isContinueNextBattle() {
         return true;
       case 'n':
         return false;
+      default:
+        print('다시 입력해주세요.');
     }
   }
 }
