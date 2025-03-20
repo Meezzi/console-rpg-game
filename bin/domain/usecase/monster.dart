@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'character.dart';
 
 class Monster {
@@ -20,6 +21,7 @@ class Monster {
   void attackCharacter(Character character) {
     print('$name이(가) ${character.name}에게 $attack의 데미지를 입혔습니다.');
     character.health -= attack - character.defense;
+    attack = Random().nextInt(attack - character.defense) + character.defense;
   }
 
   void showStatus() {
