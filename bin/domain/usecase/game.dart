@@ -126,5 +126,8 @@ class Game {
     // Character의 정보를 변수에 저장
     String characterData =
         '${character.name}, ${character.health}, $gameResult';
+
+    // Monster의 정보를 저장할 변수 선언
+    String monsterData = '';
   }
 }
