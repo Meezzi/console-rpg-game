@@ -112,6 +112,7 @@ class Game {
           // 아이템 3 상태(사용하고, 공격한 상태)로 변경
           if (character.item == 2) {
             character.attack = (character.attack / 2).toInt();
+            character.item = 3;
           }
           break;
         case '2':
