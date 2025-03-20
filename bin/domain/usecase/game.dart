@@ -129,5 +129,13 @@ class Game {
 
     // Monster의 정보를 저장할 변수 선언
     String monsterData = '';
+
+    // 전투를 진행하지 않은 몬스터가 있다면 몬스터의 데이터 저장
+    if (monster.isNotEmpty) {
+      for (int i = 0; i < monster.length; i++) {
+        monsterData +=
+            '${monster[i].name}, ${monster[i].health}, ${monster[i].attack}, ${monster[i].defense}, ${monster[i].maxAttack}\n';
+      }
+    }
   }
 }
