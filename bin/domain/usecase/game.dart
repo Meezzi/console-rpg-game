@@ -20,6 +20,13 @@ class Game {
 
     // 턴 시작 전 1초 대기
     await Future.delayed(Duration(milliseconds: 1000));
+
+    while (true) {
+      print('새로운 몬스터가 나타났습니다!');
+      
+      // 몬스터 리스트에서 랜덤으로 몬스터 선택
+      Monster monster = getRandomMonster();
+    }
   }
 
   // 전투 시작
