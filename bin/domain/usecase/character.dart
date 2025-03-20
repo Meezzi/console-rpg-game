@@ -17,7 +17,10 @@ class Character {
     return Character(name, health, attack, defense);
   }
 
-  void attackMonster(Monster monster) {}
+  void attackMonster(Monster monster) {
+    print('$name이(가) ${monster.name}에게 $attack의 데미지를 입혔습니다.');
+    monster.health -= attack;
+  }
 
   void defend() {}
 
