@@ -98,8 +98,8 @@ class Game {
       }
       print('');
 
-      // 몬스터의 체력이 0 미만일 경우, 전투 종료
-      if (monster.health < 0) {
+      // 몬스터의 체력이 0 이하일 경우, 전투 종료
+      if (monster.health <= 0) {
         return true;
       }
 
