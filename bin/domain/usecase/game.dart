@@ -67,7 +67,12 @@ class Game {
         }
       } else {
         // 몬스터 리스트가 비어있다면 게임 종료
-        print('축하합니다! 모든 몬스터를 물리쳤습니다.');
+        // 결과 저장 여부 확인 후, 결과 저장
+        print('축하합니다! 모든 몬스터를 물리쳤습니다.\n');
+        stdout.write('결과를 저장하시겠습니까? (y/n): ');
+        if (isContinueNextBattle()) {
+          saveGame(character, monsters, true);
+        }
         return;
       }
       print('');
