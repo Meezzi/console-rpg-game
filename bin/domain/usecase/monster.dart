@@ -4,10 +4,11 @@ import 'character.dart';
 class Monster {
   String name;
   int health;
-  int attack;
+  int maxAttack;
+  int attack = 0;
   int defense = 0;
 
-  Monster(this.name, this.health, this.attack);
+  Monster(this.name, this.health, this.maxAttack);
   factory Monster.fromPlainText(String content) {
     final stats = content.split(',');
 
@@ -21,7 +22,8 @@ class Monster {
   void attackCharacter(Character character) {
     print('$name이(가) ${character.name}에게 $attack의 데미지를 입혔습니다.');
     character.health -= attack - character.defense;
-    attack = Random().nextInt(attack - character.defense) + character.defense;
+    attack =
+        Random().nextInt(maxAttack - character.defense) + character.defense;
   }
 
   void showStatus() {
