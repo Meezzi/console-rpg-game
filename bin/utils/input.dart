@@ -26,6 +26,8 @@ String getUserBattleInput() {
 
     if (input == '1' || input == '2') {
       return input!;
+    } else {
+      print('다시 입력해주세요.');
     }
   }
 }
