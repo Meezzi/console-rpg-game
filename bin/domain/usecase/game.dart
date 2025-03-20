@@ -16,6 +16,10 @@ class Game {
     print('게임을 시작합니다!');
     // 캐릭터 상태 표시
     character.showStatus();
+    print('');
+
+    // 턴 시작 전 1초 대기
+    await Future.delayed(Duration(milliseconds: 1000));
   }
 
   // 전투 시작
