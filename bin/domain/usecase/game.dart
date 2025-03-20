@@ -12,6 +12,10 @@ class Game {
   //Game 생성자
   Game(this.character, this.monsters);
 
+  Future<void> startGame() async {
+    print('게임을 시작합니다!');
+  }
+
   // 전투 시작
   Future<bool> battle(Monster monster) async {
     while (true) {
