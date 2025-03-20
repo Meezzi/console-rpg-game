@@ -29,4 +29,9 @@ class Monster {
   void showStatus() {
     print('$name - 체력: $health, 공격력: $attack');
   }
+
+  // 몬스터의 방어력 2씩 증가
+  void increaseDefense() {
+    defense += 2;
+  }
 }
