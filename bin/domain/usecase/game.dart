@@ -98,8 +98,8 @@ class Game {
       }
       print('');
 
-      // 몬스터의 체력이 0 미만일 경우, 전투 종료
-      if (monster.health < 0) {
+      // 몬스터의 체력이 0 이하일 경우, 전투 종료
+      if (monster.health <= 0) {
         return true;
       }
 
@@ -118,8 +118,8 @@ class Game {
       // 모든 턴이 끝난 후 1초 대기
       await Future.delayed(Duration(milliseconds: 1000));
 
-      // 캐릭터의 체력이 0 미만이면, 전투 종료
-      if (character.health < 0) {
+      // 캐릭터의 체력이 0 이하면, 전투 종료
+      if (character.health <= 0) {
         return false;
       }
     }
