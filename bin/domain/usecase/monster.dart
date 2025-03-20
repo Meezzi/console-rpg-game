@@ -8,7 +8,7 @@ class Monster {
   int attack = 0;
   int defense = 0;
 
-  Monster(this.name, this.health, this.attack);
+  Monster(this.name, this.health, this.maxAttack);
   factory Monster.fromPlainText(String content) {
     final stats = content.split(',');
 
