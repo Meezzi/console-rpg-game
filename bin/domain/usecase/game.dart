@@ -14,6 +14,12 @@ class Game {
 
   Future<void> startGame() async {
     print('게임을 시작합니다!');
+    print('');
+    // 30% 확률로 캐릭터 체력 회복
+    if (Random().nextInt(100) <= 30) {
+      character.heal();
+    }
+
     // 캐릭터 상태 표시
     character.showStatus();
     print('');
