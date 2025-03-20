@@ -120,4 +120,11 @@ class Game {
     Monster monster = monsters[Random().nextInt(monsters.length)];
     return monster;
   }
+
+  // 결과를 resource/result.txt 파일에 저장
+  void saveGame(Character character, List<Monster> monster, bool gameResult) {
+    // Character의 정보를 변수에 저장
+    String characterData =
+        '${character.name}, ${character.health}, $gameResult';
+  }
 }
