@@ -22,7 +22,11 @@ class Character {
     monster.health -= attack;
   }
 
-  void defend() {}
+  void defend(Monster monster) {
+    int heal = (monster.attack / 10).toInt();
+    print('$name이(가) 방어 태세를 취하여 $heal만큼 체력을 얻었습니다.');
+    health += heal;
+  }
 
   void showStatus() {
     print('$name - 체력: $health, 공격력: $attack, 방어력: $defense');
