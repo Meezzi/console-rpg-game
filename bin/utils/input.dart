@@ -19,12 +19,12 @@ String getUserName() {
   }
 }
 
-// 전투할 때 캐릭터의 입력을 1 또는 2만 반환
+// 전투할 때 캐릭터의 입력을 1 또는 2, 3만 반환
 String getUserBattleInput() {
   while (true) {
     String? input = stdin.readLineSync();
 
-    if (input == '1' || input == '2') {
+    if (input == '1' || input == '2' || input == '3') {
       return input!;
     } else {
       print('다시 입력해주세요.');
