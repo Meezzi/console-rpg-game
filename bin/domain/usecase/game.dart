@@ -38,6 +38,13 @@ class Game {
 
       // 몬스터와 전투 후, 결과 저장
       bool battleResult = await battle(monster);
+
+      // 결과가 true이면 몬스터 리스트에서 해당 몬스터 삭제
+      if (battleResult) {
+        print('${monster.name}을(를) 물리쳤습니다!');
+        print('');
+        monsters.remove(monster);
+      }
     }
   }
 
