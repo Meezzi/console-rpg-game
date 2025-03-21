@@ -9,7 +9,6 @@ List<Monster> loadMonsterStatsAsync() {
     List<Monster> monsterList = [];
     for (int i = 0; i < lines.length; i++) {
       monsterList.add(Monster.fromPlainText(lines[i]));
-      print(monsterList[i].attack);
     }
     return monsterList;
   } on PathNotFoundException {
