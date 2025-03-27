@@ -106,26 +106,12 @@ class Game {
       switch (input) {
         case '1':
           character.attackMonster(monster);
-
-          // 아이템이 2(사용했으나 공격하지 않은 상태)인 상태에서 공격을 선택하면
-          // 몬스터 공격후, 원래의 공격력으로 되돌아가고,
-          // 아이템 3 상태(사용하고, 공격한 상태)로 변경
-          if (character.item == 2) {
-            character.attack = (character.attack / 2).toInt();
-            character.item = 3;
-          }
           break;
         case '2':
           character.defend(monster);
           break;
         case '3':
-          if (character.item == 1) {
-            print('공격력이 두 배로 증가했습니다.');
-            character.attack *= 2;
-            character.item = 2;
-          } else {
-            print('이미 사용한 아이템입니다.');
-          }
+          character.useItem();
       }
       print('');
 

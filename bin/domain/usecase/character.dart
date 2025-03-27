@@ -4,13 +4,13 @@ class Character {
   String name;
   int health;
   int attack;
+  late int originAttack;
   int defense;
-  // item이 1이면 사용하지 않은 상태
-  // item이 2이면 사용했으나 공격은 하지 않은 상태
-  // item이 3이면 사용한 후, 공격까지 한 상태
-  int item = 1;
+  bool usedItem = false;
 
-  Character(this.name, this.health, this.attack, this.defense);
+  Character(this.name, this.health, this.attack, this.defense) {
+    originAttack = attack;
+  }
   factory Character.fromPlainText(String name, String content) {
     final stats = content.split(',');
 
@@ -24,6 +24,7 @@ class Character {
   void attackMonster(Monster monster) {
     print('$name이(가) ${monster.name}에게 $attack의 데미지를 입혔습니다.');
     monster.health -= attack;
+    attack = originAttack;
   }
 
   void defend(Monster monster) {
@@ -40,5 +41,16 @@ class Character {
   void heal() {
     health += 10;
     print('보너스 체력을 얻었습니다! 현재 체력: $health');
+  }
+
+  // 아이템 사용
+  void useItem() {
+    if (!usedItem) {
+      print('아이템을 사용하여 $name의 공격력이 두 배가 됩니다!');
+      attack *= 2;
+      usedItem = true;
+    } else {
+      print('이미 아이템을 사용하셨습니다.');
+    }
   }
 }
