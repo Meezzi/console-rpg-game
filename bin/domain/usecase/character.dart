@@ -5,10 +5,7 @@ class Character {
   int health;
   int attack;
   int defense;
-  // item이 1이면 사용하지 않은 상태
-  // item이 2이면 사용했으나 공격은 하지 않은 상태
-  // item이 3이면 사용한 후, 공격까지 한 상태
-  int item = 1;
+  bool usedItem = false;
 
   Character(this.name, this.health, this.attack, this.defense);
   factory Character.fromPlainText(String name, String content) {
