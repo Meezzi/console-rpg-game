@@ -21,19 +21,9 @@ class Game {
     await Future.delayed(Duration(milliseconds: 1000));
 
     while (true) {
-      print('새로운 몬스터가 나타났습니다!');
 
-      // 몬스터 리스트에서 랜덤으로 몬스터 선택
-      Monster monster = getRandomMonster();
-
-      // 몬스터의 공격력을 랜덤으로 설정
-      monster.attack =
-          Random().nextInt(monster.maxAttack - character.defense) +
-          character.defense;
-
-      // 몬스터 상태 표시
-      monster.showStatus();
-      print('');
+      // 몬스터 설정
+      Monster monster = readyToBattle();
 
       // 몬스터와 전투 후, 결과 저장
       bool battleResult = await battle(monster);
@@ -90,6 +80,23 @@ class Game {
     // 캐릭터 상태 표시
     character.showStatus();
     print('');
+  }
+
+  Monster readyToBattle() {
+    print('새로운 몬스터가 나타났습니다!');
+    
+    // 몬스터 리스트에서 랜덤으로 몬스터 선택
+    Monster monster = getRandomMonster();
+    
+    // 몬스터의 공격력을 랜덤으로 설정
+    monster.attack =
+        Random().nextInt(monster.maxAttack - character.defense) +
+        character.defense;
+    
+    // 몬스터 상태 표시
+    monster.showStatus();
+    print('');
+    return monster;
   }
 
   // 전투 시작
