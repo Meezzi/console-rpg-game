@@ -38,4 +38,15 @@ class Character {
     health += 10;
     print('보너스 체력을 얻었습니다! 현재 체력: $health');
   }
+
+  // 아이템 사용
+  void useItem() {
+    if (!usedItem) {
+      print('아이템을 사용하여 $name의 공격력이 두 배가 됩니다!');
+      attack *= 2;
+      usedItem = true;
+    } else {
+      print('이미 아이템을 사용하셨습니다.');
+    }
+  }
 }
