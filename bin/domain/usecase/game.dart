@@ -13,34 +13,15 @@ class Game {
   Game(this.character, this.monsters);
 
   Future<void> startGame() async {
-    print('게임을 시작합니다!');
-    print('');
-    // 30% 확률로 캐릭터 체력 회복
-    if (Random().nextInt(100) <= 30) {
-      character.heal();
-    }
-
-    // 캐릭터 상태 표시
-    character.showStatus();
-    print('');
+    // 게임 시작 안내
+    initializeGame();
 
     // 턴 시작 전 1초 대기
     await Future.delayed(Duration(milliseconds: 1000));
 
     while (true) {
-      print('새로운 몬스터가 나타났습니다!');
-
-      // 몬스터 리스트에서 랜덤으로 몬스터 선택
-      Monster monster = getRandomMonster();
-
-      // 몬스터의 공격력을 랜덤으로 설정
-      monster.attack =
-          Random().nextInt(monster.maxAttack - character.defense) +
-          character.defense;
-
-      // 몬스터 상태 표시
-      monster.showStatus();
-      print('');
+      // 몬스터 설정
+      Monster monster = readyToBattle();
 
       // 몬스터와 전투 후, 결과 저장
       bool battleResult = await battle(monster);
@@ -64,11 +45,7 @@ class Game {
         // 입력이 n 이라면(전투를 하고 싶지 않다면) 결과 저장 여부 확인 후, 게임 종료
         // 입력이 y 라면 전투 지속
         if (!isContinueNextBattle()) {
-          stdout.write('결과를 저장하시겠습니까? ');
-          if (isContinueNextBattle()) {
-            saveGame(character, monsters, false);
-          }
-          print('게임을 종료합니다.');
+          handleGameEnd();
           return;
         }
       } else {
@@ -83,6 +60,37 @@ class Game {
       }
       print('');
     }
+  }
+
+  void initializeGame() {
+    print('게임을 시작합니다!');
+    print('');
+
+    // 30% 확률로 캐릭터 체력 회복
+    if (Random().nextInt(100) <= 30) {
+      character.heal();
+    }
+
+    // 캐릭터 상태 표시
+    character.showStatus();
+    print('');
+  }
+
+  Monster readyToBattle() {
+    print('새로운 몬스터가 나타났습니다!');
+
+    // 몬스터 리스트에서 랜덤으로 몬스터 선택
+    Monster monster = getRandomMonster();
+
+    // 몬스터의 공격력을 랜덤으로 설정
+    monster.attack =
+        Random().nextInt(monster.maxAttack - character.defense) +
+        character.defense;
+
+    // 몬스터 상태 표시
+    monster.showStatus();
+    print('');
+    return monster;
   }
 
   // 전투 시작
@@ -169,5 +177,13 @@ class Game {
     // Character 정보와 Monster 정보를 resource/result.txt 파일에 저장
     String contents = '$characterData\n$monsterData';
     File('resource/result.txt').writeAsStringSync(contents);
+  }
+
+  void handleGameEnd() {
+    stdout.write('결과를 저장하시겠습니까? ');
+    if (isContinueNextBattle()) {
+      saveGame(character, monsters, false);
+    }
+    print('게임을 종료합니다.');
   }
 }
