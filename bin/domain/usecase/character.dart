@@ -4,10 +4,13 @@ class Character {
   String name;
   int health;
   int attack;
+  late int originAttack;
   int defense;
   bool usedItem = false;
 
-  Character(this.name, this.health, this.attack, this.defense);
+  Character(this.name, this.health, this.attack, this.defense) {
+    originAttack = attack;
+  }
   factory Character.fromPlainText(String name, String content) {
     final stats = content.split(',');
 
