@@ -13,16 +13,9 @@ class Game {
   Game(this.character, this.monsters);
 
   Future<void> startGame() async {
-    print('게임을 시작합니다!');
-    print('');
-    // 30% 확률로 캐릭터 체력 회복
-    if (Random().nextInt(100) <= 30) {
-      character.heal();
-    }
 
-    // 캐릭터 상태 표시
-    character.showStatus();
-    print('');
+    // 게임 시작 안내
+    initializeGame();
 
     // 턴 시작 전 1초 대기
     await Future.delayed(Duration(milliseconds: 1000));
@@ -83,6 +76,20 @@ class Game {
       }
       print('');
     }
+  }
+
+  void initializeGame() {
+    print('게임을 시작합니다!');
+    print('');
+
+    // 30% 확률로 캐릭터 체력 회복
+    if (Random().nextInt(100) <= 30) {
+      character.heal();
+    }
+    
+    // 캐릭터 상태 표시
+    character.showStatus();
+    print('');
   }
 
   // 전투 시작
