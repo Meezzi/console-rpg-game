@@ -24,6 +24,7 @@ class Character {
   void attackMonster(Monster monster) {
     print('$name이(가) ${monster.name}에게 $attack의 데미지를 입혔습니다.');
     monster.health -= attack;
+    attack = originAttack;
   }
 
   void defend(Monster monster) {
